@@ -1,7 +1,7 @@
 ## Getting and Cleaning Data Project
 
 INTRODUCTION
-------------
+----------------
 
 This code book is used for
 
