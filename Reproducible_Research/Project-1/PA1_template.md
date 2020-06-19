@@ -1,9 +1,3 @@
----
-title: "Reproducible Research Project 1"
-output:
-  html_document:
-    keep_md: yes
----
 ## Loading and preprocessing the data
 
 1. Load the data:
