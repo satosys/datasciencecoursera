@@ -28,7 +28,8 @@ Course Project Prediction Quiz Portion
 Apply your machine learning algorithm to the 20 test cases available in the test data above and submit your predictions in appropriate format to the Course Project Prediction Quiz for automated grading.
 
 ## Environment Setup and Analysis
-```{r}
+
+```r
 trainingURL <-"https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
 testingURL <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 trainingFile <- "./data/pml-training.csv"
@@ -44,51 +45,120 @@ if (!file.exists(testingFile)) {
 }
 ```
 ## Data dimentions
-```{r}
+
+```r
 trainRaw <- read.csv("./data/pml-training.csv")
 testRaw <- read.csv("./data/pml-testing.csv")
 dim(trainRaw)
+```
+
+```
+## [1] 19622   160
+```
+
+```r
 dim(testRaw)
 ```
 
+```
+## [1]  20 160
+```
+
 ## Pre-processing
-```{r}
+
+```r
 train <- trainRaw[, 6:ncol(trainRaw)]
 ```
 
 Split the data into 80% training and 20% testing set
 
-```{r}
+
+```r
 library(caret)
+```
+
+```
+## Loading required package: lattice
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
 set.seed(23954)
 inTrain <- createDataPartition(y = train$classe, p = 0.8, list = F)
 training <- train[inTrain, ]
 testing <- train[-inTrain, ]
 ```
 Remove the NAs
-```{r}
+
+```r
 nzv <- nearZeroVar(train, saveMetrics = T)
 keepFeat <- row.names(nzv[nzv$nzv == FALSE, ])
 training <- training[, keepFeat]
 training <- training[, colSums(is.na(training)) == 0]
 dim(training)
 ```
+
+```
+## [1] 15699    54
+```
 ## Model Building
-```{r}
+
+```r
 controlRf <- trainControl(method="cv", 5)
 modelRf <- train(classe ~ ., data=training, method="rf", trControl=controlRf, ntree=250)
 modelRf
 ```
+
+```
+## Random Forest 
+## 
+## 15699 samples
+##    53 predictor
+##     5 classes: 'A', 'B', 'C', 'D', 'E' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 12560, 12559, 12559, 12559, 12559 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy   Kappa    
+##    2    0.9954138  0.9941987
+##   27    0.9974522  0.9967773
+##   53    0.9952864  0.9940370
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 27.
+```
 ## Prediction and the confusion matrix.
-```{r}
+
+```r
 predRf <- predict(modelRf, newdata = testing)
 confusionMatrix(
   factor(predRf),
   factor(testing$classe)
 )$table
 ```
+
+```
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1116    1    0    0    0
+##          B    0  758    1    0    0
+##          C    0    0  683    1    0
+##          D    0    0    0  642    1
+##          E    0    0    0    0  720
+```
 ## Quiz answers
-```{r}
+
+```r
 predRfTest <- predict(modelRf, newdata = testRaw)
 predRfTest
+```
+
+```
+##  [1] B A B A A E D B A A B C B A E E A B B B
+## Levels: A B C D E
 ```
