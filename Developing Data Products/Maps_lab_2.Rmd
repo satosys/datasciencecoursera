@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Petal length vs width
-### Date: 7th July 2020  
+### Date: 3rd July 2020  
 ```{r, echo = F}
 suppressPackageStartupMessages(library(plotly))
 plot_ly(iris, x = iris$Petal.Length, y = iris$Petal.Width, 
@@ -17,3 +17,4 @@ plot_ly(iris, x = iris$Petal.Length, y = iris$Petal.Width,
 ```
 
   - The Setosa species has the least petal length and width 
+  
