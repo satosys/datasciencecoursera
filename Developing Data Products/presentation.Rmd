@@ -1,0 +1,44 @@
+---
+title: "Motor Trend Car Road Tests Data Exploration"
+author: "Satyajit Das"
+date: "3rd July 2020"
+output: ioslides_presentation
+smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+This presentaion explores the mtcars data, The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models)
+
+1. The mtcars Data (mtcars data) can be accessed with **data(mtcars)** in R
+3. The GitHub repository containing the R codes required to build the Shiny App (**server.R** and **ui.R**)can be accessed [here](https://github.com/satosys/datasciencecoursera/tree/master/Developing%20Data%20Products)
+2. The Shiny app can be accessed [here](https://satosys.shinyapps.io/Mtcars/), which contains
+  - Exploring the distribution of each variable in a histogram
+  - Exploring the relationship of up to three variables in a scatter plot
+
+## The mtcars Data {.smaller}
+```{r, echo = T}
+data(mtcars)
+summary(mtcars)
+```
+
+## Codes for Histogram {.smaller}
+```{r, echo = T}
+inputVar <- 'mpg'; inputBin <- 10; histVal <- mtcars[, inputVar]
+hist(histVal, breaks = seq(min(histVal), max(histVal), length.out = inputBin+1),
+     xlab = inputVar, main = paste('Distribution of', inputVar),
+     col = 'darkgray', border = 'white')
+```
+
+## Codes for Scatter Plot {.smaller}
+```{r, echo = T, fig.width=6, fig.height=3.9, fig.align = 'center'}
+library(ggplot2)
+scatX <- 'Miles/(US) gallon'; scatY <- 'Gross horsepower'; scatC <- 'Number of carburetors'
+ggplot(data = mtcars, aes(x = mpg, y = hp, color = hp)) + 
+      geom_point() + xlab(scatX) + ylab(scatY) + labs(colour = scatC) +
+      ggtitle(paste('Scatter plot of', scatX, 'vs', scatY)) +
+      theme(plot.title = element_text(hjust = 0.5))
+```

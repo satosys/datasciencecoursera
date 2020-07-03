@@ -1,0 +1,13 @@
+name: Mtcars
+title: Mtcars
+username:
+account: satosys
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2532047
+bundleId: 3347034
+url: https://satosys.shinyapps.io/Mtcars/
+when: 1593759792.56088
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Maps_lab.html|Maps_lab.Rmd|Maps_lab_2.html|Maps_lab_2.Rmd
