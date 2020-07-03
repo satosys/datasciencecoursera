@@ -13,7 +13,7 @@ Create a web page using R Markdown that features a map created with Leaflet. Hos
 Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
 
 
-## 7th July 2020
+## 3rd July 2020
 
 ```{r, echo = F}
 library(leaflet)
