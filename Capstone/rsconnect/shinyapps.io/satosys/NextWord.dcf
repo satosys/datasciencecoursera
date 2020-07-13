@@ -1,0 +1,13 @@
+name: NextWord
+title: NextWord
+username:
+account: satosys
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2565942
+bundleId: 3386200
+url: https://satosys.shinyapps.io/NextWord/
+when: 1594650160.05512
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Milestone_Report.html|Milestone_Report.Rmd

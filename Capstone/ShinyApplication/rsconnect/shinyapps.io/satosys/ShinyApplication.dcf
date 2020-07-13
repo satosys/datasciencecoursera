@@ -1,0 +1,13 @@
+name: ShinyApplication
+title: ShinyApplication
+username:
+account: satosys
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2566172
+bundleId: 3386441
+url: https://satosys.shinyapps.io/ShinyApplication/
+when: 1594653364.94596
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: about/about.html|about/about.Rmd|footer/footer.md|footer/logos.png|references/references.html|references/references.Rmd|sponsors/logos.png|sponsors/sponsors.md
